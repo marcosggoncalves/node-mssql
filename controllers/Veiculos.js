@@ -1,10 +1,8 @@
 
-const connect = require('../connect');
+
 
 const listagem = async (req,res) => {
     try {
-        await connect.connect();
-
         const result = await connect.query('SELECT * FROM veiculo where is_site = 1  order by id desc');
 
         res.render('Veiculos', { title: 'Meu Veiculos', veiculos: result.recordset }); 
@@ -37,8 +35,7 @@ const cadastrar = async(req, res) => {
 
         res.send('Cadastro enviado e postado no site!'); 
     } catch (err) {
-        console.log(err)
-        res.send('Não foi possivel enviar cadastrado e postar!');
+        res.status(500).send('Não foi possivel enviar cadastrado e postar!');
     }
 } 
 
