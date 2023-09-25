@@ -23,7 +23,7 @@ const cadastrar = async (req, res) => {
         const veiculo = req.body;
 
         if (veiculo && veiculo.is_site == 0) {
-            await connect.query(`delete from dbo.veiculo_site where id_rp = ${veculo.id_rp}`);
+            await connect.query(`delete from dbo.veiculo_site where id_rp = ${veiculo.id_rp}`);
             return res.send('Cadastro foi removido site!');
         }
 
@@ -39,6 +39,7 @@ const cadastrar = async (req, res) => {
 
         res.send('Cadastro enviado e postado no site!');
     } catch (err) {
+        console.log(err)
         res.status(500).send('Não foi possivel enviar cadastro para o site!');
     }
 }
