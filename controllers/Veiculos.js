@@ -16,6 +16,18 @@ const listagem = async (req, res) => {
     }
 }
 
+const deletarTudo = async(req, res) =>{
+    try {
+        await connect.connect();
+
+        await connect.query(`delete from dbo.veiculo_site`);
+
+        return res.send('Todas publicações foram excluidas com sucesso!');
+    } catch (error) {
+        res.status(500).send('Não foi possivel limpar todas publicações!');
+    }
+}
+
 const cadastrar = async (req, res) => {
     try {
         await connect.connect();
@@ -39,12 +51,12 @@ const cadastrar = async (req, res) => {
 
         res.send('Cadastro enviado e postado no site!');
     } catch (err) {
-        console.log(err)
         res.status(500).send('Não foi possivel enviar cadastro para o site!');
     }
 }
 
 module.exports = {
     listagem,
-    cadastrar
+    cadastrar,
+    deletarTudo
 }

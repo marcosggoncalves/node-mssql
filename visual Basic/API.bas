@@ -14,7 +14,7 @@ Function JSON(id As Integer, placa As String, descricao As String, url_imagem As
     JSON = jsonString
 End Function
 
-Function RequestSite(id As Integer, placa As String, descricao As String, url_imagem As String, marca As String, modelo As String, quantidade_lugares As String, is_site As Integer) As String
+Function enviaCadastro(id As Integer, placa As String, descricao As String, url_imagem As String, marca As String, modelo As String, quantidade_lugares As String, is_site As Integer) As String
     Dim xhr As Object
 
     Set xhr = CreateObject("MSXML2.ServerXMLHTTP")
@@ -35,5 +35,5 @@ Function RequestSite(id As Integer, placa As String, descricao As String, url_im
 
     Set xhr = Nothing
 
-    RequestSite = mensagem
-End Sub
+    enviaCadastro = mensagem
+End Function
